@@ -8,28 +8,40 @@ import {
   Button,
   ImageBackground,
   TouchableHighlight,
+  Image,
 } from 'react-native';
 
 const imageBG = require('../images/backGroudImage.png');
+const add = require('../images/add.png');
 
 const RegistrationScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground source={imageBG} resizeMode="cover" style={styles.image}>
         <View style={styles.bg}>
-          <View style={styles.photo} />
+          <View style={styles.photo}>
+            <Image source={add} style={styles.addPhoto} />
+          </View>
           <Text style={styles.title}>Реєстрація</Text>
           <TextInput placeholder="Логін" style={styles.input} />
           <TextInput
             placeholder="Адреса електронної пошти"
             style={styles.input}
           />
-          <TextInput placeholder="Пароль" style={styles.input} />
+          <View style={styles.passwordContainer}>
+            <TextInput
+              placeholder="Пароль"
+              style={styles.input}
+              secureTextEntry={true}
+            />
+            <Text style={styles.passwordText}>Показати</Text>
+          </View>
+
           <TouchableHighlight
             style={{
               width: '91%',
               height: 50,
-              marginTop: 43,
+              marginTop: 27,
               paddingTop: 16,
               paddingBottom: 16,
               fontFamily: 'Roboto',
@@ -65,6 +77,10 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: '#F6F6F6',
   },
+  addPhoto: {
+    top: 81,
+    left: 107,
+  },
   bg: {
     width: '100%',
     height: '100%',
@@ -75,7 +91,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: 92,
-    marginBottom: 16,
+    marginBottom: 32,
 
     color: '#212121',
     fontFamily: 'RobotoMedium',
@@ -84,8 +100,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    marginTop: 16,
-    paddingLeft: 16,
+    padding: 16,
+    marginBottom: 16,
     alignSelf: 'center',
 
     height: 50,
@@ -94,10 +110,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
 
     borderWidth: 1,
-    borderRadius: 4,
+    borderRadius: 10,
     borderColor: '#E8E8E8',
     backgroundColor: '#F6F6F6',
     // placeholderTextColor: '#BDBDBD',
+  },
+  passwordText: {
+    position: 'absolute',
+    right: 36,
+    bottom: 16,
+    transform: [{ translateY: -14 }],
+
+    fontSize: 16,
+    color: '#1B4371',
   },
   buttonText: {
     fontFamily: 'Roboto',
